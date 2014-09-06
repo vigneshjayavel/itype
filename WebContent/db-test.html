@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IndexedDB</title>
+    <script type="text/javascript" src="chrome/libs/dbUtil.js"></script>
+</head>
+<body>
+    <div id="container">
+        <label for="txtName">
+            Name:
+        </label>
+        <input type="text" id="txtName" name="txtName" />
+        <br />
+        <label for="txtEmail">
+            Email:
+        </label>
+        <input type="email" id="txtEmail" name="txtEmail" />
+        <br />
+        <input type="button" id="btnAdd" value="Add Record" />
+        <br />
+        <label for="txtID">
+            ID:
+        </label>
+        <input type="text" id="txtID" name="txtID" />
+        <br />
+        <input type="button" id="btnDelete" value="Delete Record" />
+        <br />
+        <input type="button" id="btnPrint" value="Print objectStore" />
+        <br />
+        <input type="button" id="btnGet" value="Get obj based on id" />
+        <br />
+        <input type="button" id="btnUpdate" value="Update obj based on id" />
+        <br />
+        <output id="printOutput">
+        </output>
+    </div>
+</body>
+</html>

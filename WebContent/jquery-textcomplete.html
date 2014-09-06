@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>jQ textcomplete</title>
+		<link href="chrome/css/textcomplete/bootstrap.css" rel="stylesheet"/>
+		<link href="chrome/css/textcomplete/font-awesome.css" rel="stylesheet"/>
+		<link href="chrome/css/textcomplete/main.css" rel="stylesheet"/>
+		<script src="chrome/libs/jquery.js"></script>
+		<script src="chrome/libs/predict.js"></script>
+		<script src="chrome/libs/jquery.textcomplete.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			(function($) {
+				$(document).ready(function() {
+					$('#myTextbox').textcomplete([{
+						match : /\b(\w{2,})$/,
+						search : function(term, callback) {
+							console.log("searching for " + term);
+							//for every keyup event, the algo is queried for a possible list of words from the wordTree
+							callback($.map(search(term), function(word) {
+								return word.indexOf(term) === 0 ? word : null;
+							}));
+						},
+						index : 1,
+						replace : function(word) {
+							return word + ' ';
+						}
+					}]).on({
+						'textComplete:select' : function(e, value) {
+							console.log("You choose : " + value);
+						},
+						'textComplete:show' : function(e) {
+							// 		TODO :				Show hint of the first word in the dropdown list.
+							$(this).data('autocompleting', true);
+						},
+						'textComplete:hide' : function(e) {
+							$(this).data('autocompleting', false);
+						}
+					});
+
+					// Manually detecting "spaces"
+					//if there is a space entered that means that the user has manually entered a "new" word and the machine should learn it.
+					$('#myTextbox').on('keyup', function(e) {
+						if (e.keyCode === 32) {
+							console.log("looks like you dint find a word in the text predictor");
+							var text = $('#myTextbox').val();
+							var latestWord = text.substring(0, text.lastIndexOf(' '));
+							latestWord = latestWord.indexOf(' ') != -1 ? latestWord.substring(latestWord.lastIndexOf(' '), latestWord.length) : latestWord;
+							console.log("New word learnt : " + latestWord);
+							insert(latestWord);
+						}
+					});
+				});
+
+			})(window.jQuery);
+
+		</script>
+	</head>
+	<body>
+		<textarea id="myTextbox" name="myTextbox"></textarea>
+	</body>
+</html>

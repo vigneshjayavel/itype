@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<script src="chrome/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="chrome/libs/typeahead.bundle.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="sample-css.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	</head>
+	<body>
+		<textarea id="key" name="textArea1" rows="8" cols="40"></textarea>
+		<input type="text" name="selfie" value="" id="selfie" data-provide="typeahead" data-items="4" class="typeahead"/>
+		
+		<div id="typedText"></div>
+	
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			console.log("inside typeahead");
+			numbers = new Bloodhound({
+				datumTokenizer : function(d) {
+					return Bloodhound.tokenizers.whitespace(d.num);
+				},
+				queryTokenizer : Bloodhound.tokenizers.whitespace,
+				local : [{
+					num : 'one'
+				}, {
+					num : 'two'
+				}, {
+					num : 'three'
+				}, {
+					num : 'four'
+				}, {
+					num : 'five'
+				}, {
+					num : 'six'
+				}, {
+					num : 'seven'
+				}, {
+					num : 'eight'
+				}, {
+					num : 'nine'
+				}, {
+					num : 'ten'
+				}]
+			});
+
+			numbers.initialize();
+
+			$('.typeahead').typeahead(null, {
+				displayKey : 'num',
+				source : numbers.ttAdapter()
+			});
+
+		});
+	</script>
+</html>

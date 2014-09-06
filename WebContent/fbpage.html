@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Bootstrap typeahead</title>
+		<script type="text/javascript" src="chrome/libs/jquery.js"></script>
+		<script>
+
+		</script>
+	</head>
+	<body>
+		<div class="_552h">
+		<textarea class="uiTextareaAutogrow _552m" ></textarea>
+		</div>
+		<div class = "fbNubFlyout fbDockChatTabFlyout"></div>
+		<div class = "_552h"></div>
+		<div>
+    <!--input id="main" type="text" />
+    <input id="autocomplete" type="text" disabled="disabled" /-->
+</div>
+	
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		source = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+
+		/*$(document).ready(function() {
+			$(".typeahead").on("keyup", function(e) {
+				var sequence;
+				if ($(this).val().length > 1) {
+					sequence = $(this).val();
+				} else {
+					sequence = String.fromCharCode(e.which);
+				}
+				console.log("enterd:"+String.fromCharCode(e.which));
+				console.log("searching:"+sequence);
+				console.log(search(sequence));
+			});
+			words = search("ant");
+			console.log("returns..");
+			console.log(words.toString());
+			function extractor(query) {
+				var result = /([^,]+)$/.exec(query);
+				if (result && result[1])
+					return result[1].trim();
+				return '';
+			}
+
+
+			$('.typeahead11').typeahead({
+				source : source,
+				updater : function(item) {
+					return this.$element.val().replace(/[^,]*$/, '') + item + ',';
+				},
+				matcher : function(item) {
+					var tquery = extractor(this.query);
+					if (!tquery)
+						return false;
+					return ~item.toLowerCase().indexOf(tquery.toLowerCase());
+				},
+				highlighter : function(item) {
+
+					var query = extractor(this.query).replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
+					return item.replace(new RegExp('(' + query + ')', 'ig'), function($1, match) {
+						return '<strong>' + match + '</strong>';
+					})
+				}
+			});
+
+		});*/
+
+	</script>
+</html>
